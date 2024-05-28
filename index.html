@@ -7,7 +7,7 @@
     <link href="style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -46,7 +46,7 @@
                     <th class="stats">
                         <h3>Mining Drone Lv.<span id="buff2Lv">0</span></h3> 
                         <p>Cost:50</p>
-                        <p>Increases auto ore mining by 1 Ore Per seconds</p>
+                        <p>Increases auto ore mining by 1 Ore Per 5 seconds</p>
                         <p>1 Ore Per Seconds</p>
                     </th>
                 </tr>                
@@ -57,7 +57,7 @@
                     <th class="stats">
                         <h3>Mining Robot Lv.<span id="buff3Lv">0</span></h3> 
                         <p>Cost:100</p>
-                        <p>Increases auto ore mining by 10 Ore Per seconds</p>
+                        <p>Increases auto ore mining by 10 Ore Per 5 seconds</p>
                         <p>0 Ore Per Seconds</p>
                     </th>
                 </tr>
@@ -68,7 +68,7 @@
                     <th class="stats">
                         <h3>Mining Mech Lv.<span id="buff4Lv">0</span></h3> 
                         <p>Cost:200</p>
-                        <p>Increases auto ore mining by 50 Ore Per seconds</p>
+                        <p>Increases auto ore mining by 50 Ore Per 5 seconds</p>
                         <p>0 Ore Per Seconds</p> 
                     </th>
                 </tr>
@@ -79,7 +79,7 @@
                     <th class="stats">
                             <h3>Mining Machine Lv.<span id="buff5Lv">0</span></h3> 
                             <p>Cost:400</p>
-                            <p>Increases auto ore mining by 150 Ore Per seconds</p>
+                            <p>Increases auto ore mining by 150 Ore Per 5 seconds</p>
                             <p>0 Ore Per Seconds</p> 
                     </th>
                 </tr>
@@ -89,85 +89,13 @@
             <h2>Ore: <span id="oreValue">0</span></h2>
             <br>
             <button onclick="mine()"><img src="images/buff1.png" alt="pixaxe" id="clickingButton" ></button>
+            <hr>
+            <!--Logs-->
+            <h2>--Logs--</h2>
+            <p>Upgrade: <span id="logSpaceUpgrade"></span></p>
+            <p>Error: <span id="logSpaceError"></span></p>
         </div>
     </div>
-    <script>
-        let ore = 0
-        let oreValue = document.getElementById("oreValue")
-        
-        let buff1LvValue = 1
-        let buff2LvValue = 0
-        let buff3LvValue = 0
-        let buff4LvValue = 0
-        let buff5LvValue = 0
-
-        let buff1Lv = document.getElementById("buff1Lv")
-        let buff2Lv = document.getElementById("buff2Lv")
-        let buff3Lv = document.getElementById("buff3Lv")
-        let buff4Lv = document.getElementById("buff4Lv")
-        let buff5Lv = document.getElementById("buff5Lv")
-
-        function mine() {
-            ore = ore + 1
-            oreValue.innerText = ore
-        }
-        function buff1Upgrade() {
-            if ( ore >= 10) {
-                buff1LvValue = buff1LvValue + 1
-                buff1Lv.innerText = buff1LvValue
-                ore = ore - 10
-                oreValue.innerText = ore
-            }
-            else {
-                alert("insufficient ore")
-            }
-        }
-        function buff2Upgrade() {
-            if (ore >= 50) {
-                buff2LvValue = buff2LvValue + 1
-                buff2Lv.innerText = buff2LvValue
-                ore = ore - 50
-                oreValue.innerText = ore
-            }
-            else {
-                alert("insufficient ore")
-            }
-            
-
-        }
-        function buff3Upgrade() {
-            if (ore >= 100) {
-                buff3LvValue = buff3LvValue + 1
-                buff3Lv.innerText = buff3LvValue
-                ore = ore - 100
-                oreValue.innerText = ore
-            }
-            else {
-                alert("insufficient ore")
-            }
-        }
-        function buff4Upgrade() {
-            if (ore >= 200) {
-                buff4LvValue = buff4LvValue + 1
-                buff4Lv.innerText = buff4LvValue
-                ore = ore - 200
-                oreValue.innerText = ore
-            }
-            else {
-                alert("insufficient ore")
-            }
-        }
-        function buff5Upgrade() {
-            if (ore >= 400) {
-                buff5LvValue = buff5LvValue + 1
-                buff5Lv.innerText = buff5LvValue
-                ore = ore - 400
-                oreValue.innerText = ore
-            }
-            else {
-                alert("insufficient ore")
-            }
-        }
-    </script>
+    <script src="script.JS"></script>
 </body>
 </html>
