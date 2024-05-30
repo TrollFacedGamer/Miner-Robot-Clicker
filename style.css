@@ -1,8 +1,4 @@
-.jersey-10-regular {
-    font-family: "Jersey 10", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 .container {  display: grid;
     grid-template-columns: 1.2fr 0.8fr 1fr;
@@ -47,8 +43,28 @@ tr,th {
     height: 100px;
 }
 
+body {
+background-color: aliceblue;
+font-family:"Pixelify Sans";
+}
 
- body {
-    background-color: aliceblue;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- }
+button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+button:enabled:active {
+    opacity: 1;
+}
+button:disabled {
+    background-color: red;
+    cursor: not-allowed;
+}

@@ -32,7 +32,10 @@ function buff1Upgrade() {
         ore = ore - buffCost1value
         updateBuff1Cost()
         oreValue.innerText = ore
-        buffLog("congratulationsn your Pickaxe Lv." + (buff1LvValue - 1) + " have being upgraded to Pickaxe Lv." + buff1LvValue)
+        buffLog(
+            "congratulationsn your Pickaxe Lv." + (buff1LvValue - 1) + " have being upgraded to Pickaxe Lv." + buff1LvValue,
+            "congratulationsn your Pickaxe Lv." + (buff1LvValue - 2) + " have being upgraded to Pickaxe Lv." + (buff1LvValue - 1)
+        )
     }
     else {
         WarningNoOre()
@@ -45,7 +48,10 @@ function buff2Upgrade() {
         ore = ore - buffCost2value
         updateBuff2Cost()
         oreValue.innerText = ore
-        buffLog("congratulationsn your Mining Drone Lv." + (buff2LvValue - 1) + " have being upgraded to Mining Drone Lv." + buff2LvValue)
+        buffLog(
+            "congratulationsn your Mining Drone Lv." + (buff2LvValue - 1) + " have being upgraded to Mining Drone Lv." + buff2LvValue,
+            "congratulationsn your Mining Drone Lv." + (buff2LvValue - 2) + " have being upgraded to Mining Drone Lv." + (buff2LvValue - 1)
+            )
     }
     else {
         WarningNoOre()
@@ -58,7 +64,10 @@ function buff3Upgrade() {
         ore = ore - buffCost3value
         updateBuff3Cost()
         oreValue.innerText = ore
-        buffLog("congratulationsn your Mining Robot Lv." + (buff3LvValue - 1) + " have being upgraded to Mining Robot Lv." + buff3LvValue)
+        buffLog(
+            "congratulationsn your Mining Robot Lv." + (buff3LvValue - 1) + " have being upgraded to Mining Robot Lv." + buff3LvValue,
+            "congratulationsn your Mining Robot Lv." + (buff3LvValue - 2) + " have being upgraded to Mining Robot Lv." + (buff3LvValue - 1)
+            )
     }
     else {
         WarningNoOre()
@@ -71,7 +80,10 @@ function buff4Upgrade() {
         ore = ore - buffCost4value
         updateBuff4Cost()
         oreValue.innerText = ore
-        buffLog("congratulationsn your Mining Mech Lv." + (buff4LvValue - 1) + " have being upgraded to Mining Mech Lv." + buff4LvValue)
+        buffLog(
+            "congratulationsn your Mining Mech Lv." + (buff4LvValue - 1) + " have being upgraded to Mining Mech Lv." + buff4LvValue,
+            "congratulationsn your Mining Mech Lv." + (buff4LvValue - 2) + " have being upgraded to Mining Mech Lv." + (buff4LvValue - 1),
+            )
     }
     else {
         WarningNoOre()
@@ -84,7 +96,10 @@ function buff5Upgrade() {
         ore = ore - buffCost5value
         updateBuff5Cost()
         oreValue.innerText = ore
-        buffLog("congratulationsn your Mining Machine Lv." + (buff5LvValue - 1) + " have being upgraded to Mining Machine Lv." + buff5LvValue)
+        buffLog(
+            "congratulationsn your Mining Machine Lv." + (buff5LvValue - 1) + " have being upgraded to Mining Machine Lv." + buff5LvValue, 
+            "congratulationsn your Mining Machine Lv." + (buff5LvValue - 2) + " have being upgraded to Mining Machine Lv." + (buff5LvValue - 1)
+        )
     }
     else {
         WarningNoOre()
@@ -135,23 +150,58 @@ let logSpaceUpgrade = document.getElementById("logSpaceUpgrade")
 let logSpaceError = document.getElementById("logSpaceError")
 let repeatedLogsUpgrade = 0
 let repeatedLogsError = 0
-function buffLog (buff) {
-    if (logSpaceUpgrade.innerText = buff) {
+
+function buffLog (buff, ogBuff) {
+    if (logSpaceUpgrade.innerText == repeatedLogsUpgrade + ogBuff) {
         repeatedLogsUpgrade = repeatedLogsUpgrade + 1
         logSpaceUpgrade.innerText = repeatedLogsUpgrade + buff
     }
     else {
-        repeatedLogsError = 1
+        repeatedLogsUpgrade = 1
         logSpaceUpgrade.innerText = repeatedLogsUpgrade + buff
     }
 }
 function WarningNoOre() {
-    if (logSpaceError.innerText = "insufficient ore") {
+    if (logSpaceError.innerText == repeatedLogsError + "insufficient ore") {
         repeatedLogsError = repeatedLogsError + 1
         logSpaceError.innerText = repeatedLogsError + "insufficient ore"
     }
     else {
         repeatedLogsError = 1
         logSpaceError.innerText = repeatedLogsError + "insufficient ore"
+    }
+}
+
+setInterval("updateBuffButton()", 500)
+function updateBuffButton () {
+    if (ore >= buffCost1value) {
+        document.getElementById("buff1TButton").disabled = false;
+    }
+    else {
+        document.getElementById("buff1TButton").disabled = true;
+    }
+    if (ore >= buffCost2value) {
+        document.getElementById("buff2TButton").disabled = false;
+    }
+    else {
+        document.getElementById("buff2TButton").disabled = true;
+    }
+    if (ore >= buffCost3value) {
+        document.getElementById("buff3TButton").disabled = false;
+    }
+    else {
+        document.getElementById("buff3TButton").disabled = true;
+    }
+    if (ore >= buffCost4value) {
+        document.getElementById("buff4TButton").disabled = false;
+    }
+    else {
+        document.getElementById("buff4TButton").disabled = true;
+    }
+    if (ore >= buffCost5value) {
+        document.getElementById("buff5TButton").disabled = false;
+    }
+    else {
+        document.getElementById("buff5TButton").disabled = true;
     }
 }
