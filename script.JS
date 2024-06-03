@@ -1,3 +1,44 @@
+//Audio
+let music = new Howl({
+    src: ['Audios/emotional_piano.ogg'],
+    autoplay: true, // start music immediately
+    loop: true, // loop music endlessly
+})
+  
+let soundPicaxe = new Howl({
+    src: ['Audios/1965_glass-breaking-04.mp3'],
+})
+
+let soundBeep = new Howl({
+    src: ['sound2.mp3'],
+})
+let sound2Beep = new Howl({
+    src: ['sound1.mp3'],
+})
+
+let soundLongBeep = new Howl({
+    src: ['sound2.mp3'],
+})
+let soundMachine = new Howl({
+    src: ['sound1.mp3'],
+})
+    
+let sound = new Howl({
+    src: ['sound2.mp3'],
+})
+
+function increasePoints() {
+points = points + 1
+sound1.play() // Play sound1 when user clicks on button
+}
+
+function gameLoop() {
+if (points >= 10000) {
+    sound2.play() // Play sound2 when points reach 10000
+}
+}
+  
+//Game
 let ore = 0
 let oreValue = document.getElementById("oreValue")
 
