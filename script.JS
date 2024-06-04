@@ -1,42 +1,33 @@
 //Audio
 let music = new Howl({
-    src: ['Audios/emotional_piano.ogg'],
+    src: ['audios/emotional_piano.ogg'],
     autoplay: true, // start music immediately
     loop: true, // loop music endlessly
 })
   
+let soundMining = new Howl({
+    src: ['audios/1965_glass-breaking-04.mp3'],
+})
 let soundPicaxe = new Howl({
-    src: ['Audios/1965_glass-breaking-04.mp3'],
+    src: ['audios/knifesharpener2.mp3'],
 })
-
 let soundBeep = new Howl({
-    src: ['sound2.mp3'],
+    src: ['audios/2052_beep-01.mp3'],
 })
-let sound2Beep = new Howl({
-    src: ['sound1.mp3'],
+let soundShortBeep1 = new Howl({
+    src: ['audios/1828_beep-short-01.mp3'],
 })
 
-let soundLongBeep = new Howl({
-    src: ['sound2.mp3'],
+let soundShortBeep2 = new Howl({
+    src: ['audios/1829_beep-short-02.mp3'],
 })
 let soundMachine = new Howl({
-    src: ['sound1.mp3'],
+    src: ['audios/2064_jackhammer-01.mp3'],
 })
     
-let sound = new Howl({
-    src: ['sound2.mp3'],
+let soundWarning = new Howl({
+    src: ['audio/warningbeep-Parking Garage Warning Buzzer 01.mp3'],
 })
-
-function increasePoints() {
-points = points + 1
-sound1.play() // Play sound1 when user clicks on button
-}
-
-function gameLoop() {
-if (points >= 10000) {
-    sound2.play() // Play sound2 when points reach 10000
-}
-}
   
 //Game
 let ore = 0
@@ -45,6 +36,7 @@ let oreValue = document.getElementById("oreValue")
 function mine() {
     ore = ore + (buff1LvValue * 0.5)
     oreValue.innerText = ore
+    soundMining.play()
 }
 let buff1LvValue = 1
 let buff2LvValue = 0
@@ -57,6 +49,12 @@ let buff2Lv = document.getElementById("buff2Lv")
 let buff3Lv = document.getElementById("buff3Lv")
 let buff4Lv = document.getElementById("buff4Lv")
 let buff5Lv = document.getElementById("buff5Lv")
+
+let orePerClick= document.getElementById("orePerClick")
+let orePerSecDrone= document.getElementById("orePerSecDrone")
+let orePerClickRobot= document.getElementById("orePerClickRobot")
+let orePerClickMech= document.getElementById("orePerClickMech")
+let orePerClickMachine= document.getElementById("orePerClickMachine")
 
 setInterval("autoMine()", 5000);
 function autoMine() {
@@ -73,10 +71,12 @@ function buff1Upgrade() {
         ore = ore - buffCost1value
         updateBuff1Cost()
         oreValue.innerText = ore
+        orePerClick.innerText = buff1LvValue * 0.5
         buffLog(
             "congratulationsn your Pickaxe Lv." + (buff1LvValue - 1) + " have being upgraded to Pickaxe Lv." + buff1LvValue,
             "congratulationsn your Pickaxe Lv." + (buff1LvValue - 2) + " have being upgraded to Pickaxe Lv." + (buff1LvValue - 1)
         )
+        soundPicaxe.play()
     }
     else {
         WarningNoOre()
@@ -89,10 +89,12 @@ function buff2Upgrade() {
         ore = ore - buffCost2value
         updateBuff2Cost()
         oreValue.innerText = ore
+        orePerSecDrone.innerText = buff2LvValue * 1
         buffLog(
             "congratulationsn your Mining Drone Lv." + (buff2LvValue - 1) + " have being upgraded to Mining Drone Lv." + buff2LvValue,
             "congratulationsn your Mining Drone Lv." + (buff2LvValue - 2) + " have being upgraded to Mining Drone Lv." + (buff2LvValue - 1)
             )
+        soundShortBeep1.play()
     }
     else {
         WarningNoOre()
@@ -105,10 +107,12 @@ function buff3Upgrade() {
         ore = ore - buffCost3value
         updateBuff3Cost()
         oreValue.innerText = ore
+        orePerClickRobot.innerText = buff3LvValue * 10
         buffLog(
             "congratulationsn your Mining Robot Lv." + (buff3LvValue - 1) + " have being upgraded to Mining Robot Lv." + buff3LvValue,
             "congratulationsn your Mining Robot Lv." + (buff3LvValue - 2) + " have being upgraded to Mining Robot Lv." + (buff3LvValue - 1)
             )
+        soundShortBeep2.play()    
     }
     else {
         WarningNoOre()
@@ -121,10 +125,12 @@ function buff4Upgrade() {
         ore = ore - buffCost4value
         updateBuff4Cost()
         oreValue.innerText = ore
+        orePerClickMech.innerText = buff4LvValue * 50
         buffLog(
             "congratulationsn your Mining Mech Lv." + (buff4LvValue - 1) + " have being upgraded to Mining Mech Lv." + buff4LvValue,
             "congratulationsn your Mining Mech Lv." + (buff4LvValue - 2) + " have being upgraded to Mining Mech Lv." + (buff4LvValue - 1),
             )
+        soundBeep.play()
     }
     else {
         WarningNoOre()
@@ -137,10 +143,12 @@ function buff5Upgrade() {
         ore = ore - buffCost5value
         updateBuff5Cost()
         oreValue.innerText = ore
+        orePerClickMachine.innerText = buff5LvValue * 150
         buffLog(
             "congratulationsn your Mining Machine Lv." + (buff5LvValue - 1) + " have being upgraded to Mining Machine Lv." + buff5LvValue, 
             "congratulationsn your Mining Machine Lv." + (buff5LvValue - 2) + " have being upgraded to Mining Machine Lv." + (buff5LvValue - 1)
         )
+        soundMachine.play()
     }
     else {
         WarningNoOre()
@@ -211,6 +219,7 @@ function WarningNoOre() {
         repeatedLogsError = 1
         logSpaceError.innerText = repeatedLogsError + "insufficient ore"
     }
+    setTimeout(soundWarning.play(), 500)
 }
 
 setInterval("updateBuffButton()", 500)
