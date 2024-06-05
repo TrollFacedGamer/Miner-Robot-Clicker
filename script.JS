@@ -4,7 +4,6 @@ let music = new Howl({
     autoplay: true, // start music immediately
     loop: true, // loop music endlessly
 })
-  
 let soundMining = new Howl({
     src: ['audios/1965_glass-breaking-04.mp3'],
 })
@@ -17,18 +16,16 @@ let soundBeep = new Howl({
 let soundShortBeep1 = new Howl({
     src: ['audios/1828_beep-short-01.mp3'],
 })
-
 let soundShortBeep2 = new Howl({
     src: ['audios/1829_beep-short-02.mp3'],
 })
 let soundMachine = new Howl({
     src: ['audios/2064_jackhammer-01.mp3'],
 })
-    
 let soundWarning = new Howl({
     src: ['audio/warningbeep-Parking Garage Warning Buzzer 01.mp3'],
 })
-  
+
 //Game
 let ore = 0
 let oreValue = document.getElementById("oreValue")
@@ -50,11 +47,12 @@ let buff3Lv = document.getElementById("buff3Lv")
 let buff4Lv = document.getElementById("buff4Lv")
 let buff5Lv = document.getElementById("buff5Lv")
 
-let orePerClick= document.getElementById("orePerClick")
-let orePerSecDrone= document.getElementById("orePerSecDrone")
-let orePerClickRobot= document.getElementById("orePerClickRobot")
-let orePerClickMech= document.getElementById("orePerClickMech")
-let orePerClickMachine= document.getElementById("orePerClickMachine")
+let orePerClick = document.getElementById("orePerClick")
+let orePerSecDrone = document.getElementById("orePerSecDrone")
+let orePerSecRobot = document.getElementById("orePerSecRobot")
+let orePerSecMech = document.getElementById("orePerSecMech")
+let orePerSecMachine = document.getElementById("orePerSecMachine")
+let orePerSecTotal = document.getElementById("orePerSecTotal")
 
 setInterval("autoMine()", 5000);
 function autoMine() {
@@ -64,6 +62,11 @@ function autoMine() {
     ore = ore + buff5LvValue * 150
     oreValue.innerText = ore
 }
+setInterval("updateOrePerSecTotal()", 500)
+function updateOrePerSecTotal() {
+orePerSecTotal.innerText = ((buff2LvValue * 1) + (buff3LvValue * 10) + (buff4LvValue * 50) + (buff5LvValue * 150))
+}
+
 function buff1Upgrade() {
     if ( ore >= buffCost1value) {
         buff1LvValue = buff1LvValue + 1
@@ -107,7 +110,7 @@ function buff3Upgrade() {
         ore = ore - buffCost3value
         updateBuff3Cost()
         oreValue.innerText = ore
-        orePerClickRobot.innerText = buff3LvValue * 10
+        orePerSecRobot.innerText = buff3LvValue * 10
         buffLog(
             "congratulationsn your Mining Robot Lv." + (buff3LvValue - 1) + " have being upgraded to Mining Robot Lv." + buff3LvValue,
             "congratulationsn your Mining Robot Lv." + (buff3LvValue - 2) + " have being upgraded to Mining Robot Lv." + (buff3LvValue - 1)
@@ -125,7 +128,7 @@ function buff4Upgrade() {
         ore = ore - buffCost4value
         updateBuff4Cost()
         oreValue.innerText = ore
-        orePerClickMech.innerText = buff4LvValue * 50
+        orePerSecMech.innerText = buff4LvValue * 50
         buffLog(
             "congratulationsn your Mining Mech Lv." + (buff4LvValue - 1) + " have being upgraded to Mining Mech Lv." + buff4LvValue,
             "congratulationsn your Mining Mech Lv." + (buff4LvValue - 2) + " have being upgraded to Mining Mech Lv." + (buff4LvValue - 1),
@@ -143,7 +146,7 @@ function buff5Upgrade() {
         ore = ore - buffCost5value
         updateBuff5Cost()
         oreValue.innerText = ore
-        orePerClickMachine.innerText = buff5LvValue * 150
+        orePerSecMachine.innerText = buff5LvValue * 150
         buffLog(
             "congratulationsn your Mining Machine Lv." + (buff5LvValue - 1) + " have being upgraded to Mining Machine Lv." + buff5LvValue, 
             "congratulationsn your Mining Machine Lv." + (buff5LvValue - 2) + " have being upgraded to Mining Machine Lv." + (buff5LvValue - 1)
@@ -253,5 +256,18 @@ function updateBuffButton () {
     }
     else {
         document.getElementById("buff5TButton").disabled = true;
+    }
+}
+
+toggleSound = document.getElementById("soundToggle")
+function soundToggler() {
+    if (toggleSound.innerText == "mute") {
+    m        
+    toggleSound.innerText = "unmute"
+        
+    }
+    else {
+        toggleSound.innerText = "mute"
+
     }
 }
