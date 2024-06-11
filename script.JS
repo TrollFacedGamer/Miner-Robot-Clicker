@@ -23,7 +23,7 @@ let soundMachine = new Howl({
     src: ['audios/2064_jackhammer-01.mp3'],
 })
 let soundWarning = new Howl({
-    src: ['audio/warningbeep-Parking Garage Warning Buzzer 01.mp3'],
+    src: ['audios/warningbeep-Parking Garage Warning Buzzer 01.mp3'],
 })
 
 //Game
@@ -213,6 +213,8 @@ function buffLog (buff, ogBuff) {
         logSpaceUpgrade.innerText = repeatedLogsUpgrade + buff
     }
 }
+
+
 function WarningNoOre() {
     if (logSpaceError.innerText == repeatedLogsError + "insufficient ore") {
         repeatedLogsError = repeatedLogsError + 1
@@ -222,8 +224,9 @@ function WarningNoOre() {
         repeatedLogsError = 1
         logSpaceError.innerText = repeatedLogsError + "insufficient ore"
     }
-    setTimeout(soundWarning.play(), 500)
+    soundWarning.play()
 }
+
 
 setInterval("updateBuffButton()", 500)
 function updateBuffButton () {
@@ -258,12 +261,21 @@ function updateBuffButton () {
         document.getElementById("buff5TButton").disabled = true;
     }
 }
+toggleMusic = document.getElementById("toggleMusic")
+function musicToggler() {
+    if (toggleMusic.innerText == "mute") {      
+        toggleMusic.innerText = "unmute"
+    }
+    else {
+        toggleMusic.innerText = "mute"
+
+    }
+}
 
 toggleSound = document.getElementById("soundToggle")
 function soundToggler() {
-    if (toggleSound.innerText == "mute") {
-    m        
-    toggleSound.innerText = "unmute"
+    if (toggleSound.innerText == "mute") {      
+        toggleSound.innerText = "unmute"
         
     }
     else {
