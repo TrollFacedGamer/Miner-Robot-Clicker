@@ -85,7 +85,7 @@
         <div class="Clicking">
             <h2>Ore: <span id="oreValue">0</span></h2>
             <br>
-            <button onclick="mine()"><img src="images/mining.png" alt="pixaxe" id="clickingButtonImg" ></button>
+            <button onclick="mine()"><img src="images/mine.png" alt="pixaxe" id="clickingButtonImg" ></button>
             <hr>
             <h2>Total Ore/5 Sec: <span id="orePerSecTotal">0</span></h2>
             <hr>
@@ -94,9 +94,17 @@
             <p>Upgrade: <span id="logSpaceUpgrade"></span></p>
             <p>Error: <span id="logSpaceError"></span></p>
             <hr>
-            <h2>--Setting--</h2>
-            <button onclick="musicToggler()" id="toggleMusic">mute</button>
-            <button onclick="soundToggler()" id="toggleSound">mute</button>
+            <h2>--Setting--</h2>  
+            <table class="mutingTableStuff">
+                <tr class="mutingTableStuff">
+                  <th class="mutingTableStuff">Music</th>
+                  <th class="mutingTableStuff">Sound</th>
+                </tr>
+                <tr class="mutingTableStuff">
+                    <th class="mutingTableStuff"><button onclick="musicToggler()" id="toggleMusic">mute</button></th>
+                    <th class="mutingTableStuff"><button onclick="soundToggler()" id="toggleSound">mute</button></th>
+                </tr>
+            </table>    
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>   

@@ -3,35 +3,27 @@ let music = new Howl({
     src: ['audios/emotional_piano.ogg'],
     autoplay: true, // start music immediately
     loop: true, // loop music endlessly
-    mute: false,
 })
 let soundMining = new Howl({
     src: ['audios/1965_glass-breaking-04.mp3'],
-    mute: false,
 })
 let soundPicaxe = new Howl({
     src: ['audios/knifesharpener2.mp3'],
-    mute: false,
 })
 let soundBeep = new Howl({
     src: ['audios/2052_beep-01.mp3'],
-    mute: false,
 })
 let soundShortBeep1 = new Howl({
     src: ['audios/1828_beep-short-01.mp3'],
-    mute: false,
 })
 let soundShortBeep2 = new Howl({
     src: ['audios/1829_beep-short-02.mp3'],
-    mute: false,
 })
 let soundMachine = new Howl({
     src: ['audios/2064_jackhammer-01.mp3'],
-    mute: false,
 })
 let soundWarning = new Howl({
     src: ['audios/warningbeep-Parking Garage Warning Buzzer 01.mp3'],
-    mute: false,
 })
 
 //Game
@@ -45,7 +37,9 @@ function mine() {
     oreValue.innerText = ore
     clickingButtonImg.src = "images/mining.png"
     soundMining.play()
-    clickingButtonImg.src = "images/mine.png"
+    setTimeout(() => {
+        clickingButtonImg.src = "images/mine.png"
+    }, 250);
 }
 let buff1LvValue = 1
 let buff2LvValue = 0
@@ -277,11 +271,11 @@ toggleMusic = document.getElementById("toggleMusic")
 function musicToggler() {
     if (toggleMusic.innerText == "mute") {      
         toggleMusic.innerText = "unmute"
-        music.mute = true
+        music.mute(true)
     }
     else {
         toggleMusic.innerText = "mute";
-        music.mute = false;
+        music.mute(false);
 
     }
 }
@@ -290,22 +284,22 @@ toggleSound = document.getElementById("toggleSound")
 function soundToggler() {
     if (toggleSound.innerText == "mute") {      
         toggleSound.innerText = "unmute"
-        soundMining.mute = true
-        soundPicaxe.mute = true
-        soundBeep.mute = true
-        soundShortBeep1.mute = true
-        soundShortBeep2.mute = true
-        soundMachine.mute = true
-        soundWarning.mute = true
+        soundMining.mute(true);
+        soundPicaxe.mute(true);
+        soundBeep.mute(true);
+        soundShortBeep1.mute(true);
+        soundShortBeep2.mute(true);
+        soundMachine.mute(true);
+        soundWarning.mute(true);
     }
     else {
         toggleSound.innerText = "mute"
-        soundMining.mute = false
-        soundPicaxe.mute = false
-        soundBeep.mute = false
-        soundShortBeep1.mute = false
-        soundShortBeep2.mute = false
-        soundMachine.mute = false
-        soundWarning.mute = false
+        soundMining.mute(false);
+        soundPicaxe.mute(false);
+        soundBeep.mute(false);
+        soundShortBeep1.mute(false);
+        soundShortBeep2.mute(false);
+        soundMachine.mute(false);
+        soundWarning.mute(false);
     }
 }

@@ -33,6 +33,12 @@ tr,th {
 .stats {
     width: 70%;
 }
+.mutingTableStuff{
+    border:none;
+}
+
+
+
 #clickingButton {
     width: 50%;
     height: 50%;
@@ -41,11 +47,6 @@ tr,th {
 #buff1Button, #buff2Button, #buff3Button, #buff4Button, #buff5Button {
     width: 100px;
     height: 100px;
-}
-
-body {
-background-color: aliceblue;
-font-family:"Pixelify Sans";
 }
 
 button {
@@ -68,3 +69,8 @@ button:disabled {
     background-color: red;
     cursor: not-allowed;
 }
+
+body {
+    background-color: aliceblue;
+    font-family:"Pixelify Sans";
+    }
